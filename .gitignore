@@ -1,0 +1,94 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup and Cache files #
+##########################
+*~
+*#
+*.bak
+*.swp
+backups
+tmp*
+temp*
+
+# OMNeT++ specific files #
+##########################
+# local and generated files not to be committed
+Makefile
+Makefile.vc
+.oppfeaturestate
+
+# output and result files
+.settings/
+results*
+*.anf
+*.log
+*.sim
+*.pyc
+*.pyo
+*.pcap
+*.sca
+*.vec
+*.vci
+.buildlog*
+
+# ignore binary files
+out/
+*.so
+*.dylib
+*.dll
+*.a
+*.lib
+*.exe
+*.o
+*.obj
+*.pdb
+*.idb
+*.manifest
+.qtenv.ini
+.qtenvrc
+.tkenvrc
+.tkenvlog
+.cmdenv-log
+netanim-trace.txt
+*.out
+
+# ignore backup and temp files
+*.UPDATED
+*.FAILED
+*.ERROR
