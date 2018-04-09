@@ -92,3 +92,8 @@ netanim-trace.txt
 *.UPDATED
 *.FAILED
 *.ERROR
+
+# possible executables of this project
+exercise8
+exercise8-2018
+exercise8-2018-extended
