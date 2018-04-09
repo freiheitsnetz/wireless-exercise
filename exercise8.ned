@@ -35,39 +35,47 @@ simple VoIPApp extends UDPBasicApp
 network Exercise8
 {
     parameters:
-        volatile int numWebDevices = default(1);
-        @display("bgb=550,252");
+        volatile int numWebDevicesWLAN = default(1);
+        volatile int numWebDevicesLAN = default(1);
+
+        @display("bgb=660,327");
 
     types:
     submodules:
-        webDevice[numWebDevices]: WirelessHost {
-            @display("p=110,54");
+        webDeviceWLAN[numWebDevicesWLAN]: WirelessHost {
+            @display("p=104,59");
+        }
+        webDeviceLAN[numWebDevicesLAN]: StandardHost {
+            @display("p=270,90");
         }
         accessPoint: AccessPoint {
-            @display("p=71,135");
+            @display("p=136,188");
         }
         switchOrRouter: Router { // uncomment this line for router
             //switchOrRouter: EtherSwitch { // uncomment this line for switch
-            @display("p=290,136");
+            @display("p=355,189");
         }
         stationB: StandardHost {
-            @display("p=433,191");
+            @display("p=498,244");
         }
         webServer: StandardHost {
-            @display("p=433,90");
+            @display("p=498,143");
         }
         stationA: WirelessHost {
-            @display("p=110,210");
+            @display("p=175,263");
         }
         radioMedium: Ieee80211ScalarRadioMedium {
-            @display("p=211,26");
+            @display("p=299,21");
         }
         flatNetworkConfigurator: FlatNetworkConfigurator {
-            @display("p=367,26");
+            @display("p=447,21");
         }
     connections:
         accessPoint.ethg++ <--> EtherLink {  datarate = 100Mbps; } <--> switchOrRouter.ethg++;
         stationB.ethg++ <--> EtherLink {  datarate = 100Mbps; } <--> switchOrRouter.ethg++; // uncomment this line for ethernet
         //stationB.pppg++ <--> EtherLink {  datarate = 100Mbps; } <--> switchOrRouter.pppg++; // uncomment this line for ppp
         webServer.ethg++ <--> EtherLink {  datarate = 100Mbps; } <--> switchOrRouter.ethg++;
+        for i=0..numWebDevicesLAN-1 {
+            webDeviceLAN[i].ethg++ <--> EtherLink {  datarate = 100Mbps; } <--> accessPoint.ethg++;
+        }
 }
