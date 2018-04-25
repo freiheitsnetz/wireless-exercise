@@ -51,10 +51,6 @@ network Exercise8
         accessPoint: AccessPoint {
             @display("p=136,188");
         }
-        switchOrRouter: Router { // uncomment this line for router
-            //switchOrRouter: EtherSwitch { // uncomment this line for switch
-            @display("p=355,189");
-        }
         stationB: StandardHost {
             @display("p=498,244");
         }
@@ -71,10 +67,8 @@ network Exercise8
             @display("p=447,21");
         }
     connections:
-        accessPoint.ethg++ <--> EtherLink {  datarate = 100Mbps; } <--> switchOrRouter.ethg++;
-        stationB.ethg++ <--> EtherLink {  datarate = 100Mbps; } <--> switchOrRouter.ethg++; // uncomment this line for ethernet
-        //stationB.pppg++ <--> EtherLink {  datarate = 100Mbps; } <--> switchOrRouter.pppg++; // uncomment this line for ppp
-        webServer.ethg++ <--> EtherLink {  datarate = 100Mbps; } <--> switchOrRouter.ethg++;
+        stationB.ethg++ <--> EtherLink {  datarate = 100Mbps; } <--> accessPoint.ethg++;
+        webServer.ethg++ <--> EtherLink {  datarate = 100Mbps; } <--> accessPoint.ethg++;
         for i=0..numWebDevicesLAN-1 {
             webDeviceLAN[i].ethg++ <--> EtherLink {  datarate = 100Mbps; } <--> accessPoint.ethg++;
         }
