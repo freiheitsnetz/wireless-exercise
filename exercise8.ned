@@ -28,15 +28,15 @@ import inet.networklayer.configurator.ipv4.FlatNetworkConfigurator;
 simple VoIPApp extends UDPBasicApp
 {
     parameters:
-        double maxDelay @unit(s) = default(-1s);
+        double maxDelay @unit(s) = default(200ms);
         @class(VoIPApp);
 }
 
 network Exercise8
 {
     parameters:
-        volatile int numWebDevicesWLAN = default(1);
-        volatile int numWebDevicesLAN = default(1);
+        volatile int numWebDevicesWLAN = default(0);
+        volatile int numWebDevicesLAN = default(0);
 
         @display("bgb=660,327");
 
