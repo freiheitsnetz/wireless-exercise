@@ -92,6 +92,7 @@ netanim-trace.txt
 *.UPDATED
 *.FAILED
 *.ERROR
+log.txt
 
 # possible executables of this project
 exercise8
